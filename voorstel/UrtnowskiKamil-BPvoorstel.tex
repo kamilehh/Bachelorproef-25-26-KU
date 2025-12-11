@@ -1,3 +1,4 @@
+% !TeX program = xelatex
 %==============================================================================
 % Sjabloon onderzoeksvoorstel bachproef
 %==============================================================================
@@ -7,6 +8,7 @@
 % Voor een voorstel in het Engels: voeg de documentclass-optie [english] toe.
 % Let op: kan enkel na toestemming van de bachelorproefcoördinator!
 \documentclass{hogent-article}
+
 
 % Invoegen bibliografiebestand
 \addbibresource{voorstel.bib}
@@ -23,7 +25,7 @@
 \academicyear{2025-2026} % TODO: pas het academiejaar aan
 
 % TODO: Werktitel
-\title{Vul hier de voorgestelde titel van je onderzoek in}
+\title{De impact van geautomatiseerde code reviews op tijd en foutdetectie bij kleine softwareteams}
 
 % TODO: Studentnaam en emailadres invullen
 \author{Kamil Urtnowski}
@@ -36,7 +38,7 @@
 % \email{yasmine.alaoui@student.hogent.be}
 
 % TODO: Geef de co-promotor op
-\supervisor[Co-promotor]{A. De Witte (Synalco, \href{mailto:sigrid.beekman@synalco.be}{sigrid.beekman@synalco.be})}
+\supervisor[Co-promotor]{/ (, \href{}{})}
 
 % Binnen welke specialisatierichting uit 3TI situeert dit onderzoek zich?
 % Kies uit deze lijst:
@@ -50,12 +52,18 @@
 %   zelf
 %
 \specialisation{AI \& Data Engineering}
-\keywords{Scheme, World Wide Web, $\lambda$-calculus}
+\keywords{Code reviews, Geautomatiseerde tools, Softwarekwaliteit, Pull requests}
 
 \begin{document}
 
 \begin{abstract}
-  Hier schrijf je de samenvatting van je voorstel, als een doorlopende tekst van één paragraaf. Let op: dit is geen inleiding, maar een samenvattende tekst van heel je voorstel met inleiding (voorstelling, kaderen thema), probleemstelling en centrale onderzoeksvraag, onderzoeksdoelstelling (wat zie je als het concrete resultaat van je bachelorproef?), voorgestelde methodologie, verwachte resultaten en meerwaarde van dit onderzoek (wat heeft de doelgroep aan het resultaat?).
+  Software development teams besteden ongeveer 20\% van hun tijd aan code reviews.
+  Hoewel code reviews heel belangrijk zijn om kwaliteitsvolle code te schrijven, zorgen handmatige code reviews heel vaak voor bottlenecks door tijdsgebrek en inconsistenties.
+  Binnen dit onderzoek gaan we kijken hoe efficiënt en accuraat geautomatiseerde code review tools (zoals GitHub Copilot, CodeRabbit en SonarQube) zijn in vergelijking met handmatige code reviews.
+  Door het uitvoeren van een vergelijkende experiment gaan we meten hoeveel tijd nodig is voor beide methodes en worden en het percentage van bugs dat effectief gedetecteerd wordt.
+  De verwachting is dat geautomatiseerde tools beter zullen zijn in het detecteren van syntax-, stijl- en eenvoudige beveiligingsfouten,
+  wat zal leiden tot een significante tijdsbesparing in de initiële fase van de review, maar dat voor heel complexe logische fouten nogsteeds menselijke input nodig zal zijn. 
+  Het doel is om een advies te formuleren voor kleinere software development teams over welke strategie de meeste tijdswinst oplevert, terwijl de kwaliteit van de code nogsteeds heel hoog blijft.
 \end{abstract}
 
 \tableofcontents

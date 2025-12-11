@@ -1,3 +1,4 @@
+% !TeX program = xelatex
 %---------- Inleiding ---------------------------------------------------------
 
 % TODO: Is dit voorstel gebaseerd op een paper van Research Methods die je
@@ -15,70 +16,95 @@
 \section{Inleiding}%
 \label{sec:inleiding}
 
-Waarover zal je bachelorproef gaan? Introduceer het thema en zorg dat volgende zaken zeker duidelijk aanwezig zijn:
+Softwareontwikkeling is een complex proces waarbij kwaliteit en snelheid vaak met elkaar in strijd zijn.
+Een heel belangrijk deel tijdens het ontwikkelen van software dat zorgt voor het behouden van een hoge kwaliteit van de code is 'Code Review'.
+Dat is het proces waarbij developers elkaars code controleren om na te kijken of deze geen fouten bevat, voordat ze het stukje gaan toevoegen aan de hoofdcode.
 
-\begin{itemize}
-  \item kaderen thema
-  \item de doelgroep
-  \item de probleemstelling en (centrale) onderzoeksvraag
-  \item de onderzoeksdoelstelling
-\end{itemize}
+\subsection{Probleemstelling}
+De meeste software development teams besteden ongeveer 20 procent van hun tijd aan handmatige code reviews.
+Het reviewen van code is heel belangerijk, maar het kost de developers heel veel tijd en is vaak inconsistent.
+Developers moeten vaak dagen wachten voordat hun \emph{pull request} (PR) gereviewd wordt,
+waardoor dat ze vaak niet verder kunnen. De kwaliteit van de review is ook sterk afhankelijk van de ervaring van de reviewer,
+waardoor sommige bugs gemist worden en later grotere bugs kunnen veroorzaken of de kwaliteit van de code verminderen.
+Dit probleem is specifiek voor de doelgroep van dit onderzoek: \textbf{kleinere software development teams (tot 15 leden)},
+waar capaciteit beperkt is.
 
-Denk er aan: een typische bachelorproef is \textit{toegepast onderzoek}, wat betekent dat je start vanuit een concrete probleemsituatie in bedrijfscontext, een \textbf{casus}. Het is belangrijk om je onderwerp goed af te bakenen: je gaat voor die \textit{ene specifieke probleemsituatie} op zoek naar een goede oplossing, op basis van de huidige kennis in het vakgebied.
+\subsection{Onderzoeksvragen}
+De centrale onderzoeksvraag is:
+\textit{In welke mate kunnen geautomatiseerde code review tools de inconsistenties en bottlenecks in handmatige code reviews verminderen bij kleine software development teams?}
 
-De doelgroep moet ook concreet en duidelijk zijn, dus geen algemene of vaag gedefinieerde groepen zoals \emph{bedrijven}, \emph{developers}, \emph{Vlamingen}, enz. Je richt je in elk geval op it-professionals, een bachelorproef is geen populariserende tekst. Eén specifiek bedrijf (die te maken hebben met een concrete probleemsituatie) is dus beter dan \emph{bedrijven} in het algemeen.
+Om een antwoord te vinden op deze vraag, moeten we een aantal deelvragen beantwoorden uit zowel het probleemdomein als het oplossingsdomein.
 
-Formuleer duidelijk de onderzoeksvraag! De begeleiders lezen nog steeds te veel voorstellen waarin we geen onderzoeksvraag terugvinden.
+\paragraph{Probleemdomein (Huidige situatie)}
+\begin{enumerate}
+    \item Wat is de gemiddelde doorlooptijd van een pull request tot 500 regels code, bij alleen handmatige reviews, en hoeveel procent van deze tijd is wachttijd?
+    \item Welke specifieke review-activiteiten (lezen, commentaar schrijven, discuseren) nemen de meeste tijd in beslag?
+    \item Wat is de \emph{defect detection rate} bij handmatige reviews: hoeveel fouten worden gemiddeld gevonden en welk type fouten wordt het meeste gemist?
+\end{enumerate}
 
-Schrijf ook iets over de doelstelling. Wat zie je als het concrete eindresultaat van je onderzoek, naast de uitgeschreven scriptie? Is het een proof-of-concept, een rapport met aanbevelingen, \ldots Met welk eindresultaat kan je je bachelorproef als een succes beschouwen?
+\paragraph{Oplossingsdomein (Automatisering)}
+\begin{enumerate}
+    \item Welke percentage van de bugs wordt gedetecteerd door geautomatiseerde code review tools in vergelijking met handmatige reviews?
+    \item Hoeveel tijd in procent kan bespaard worden door geautomatiseerde tools te gebruiken voor de initiële fase van de review?
+    \item Welke type fouten (bijv. security, code style, performance) worden sneller gedetecteerd door geautomatiseerde tools dan door mensen?
+\end{enumerate}
+
+\subsection{Onderzoeksdoelstelling}
+Het doel van deze bachelorproef is om op basis van meetbare resultaten kleine teams te ondersteunen bij het verbeteren van hun code review proces.
+Het eindresultaat zal aantonen welke combinatie van handmatige reviews en tools het meest efficiënt is.
 
 %---------- Stand van zaken ---------------------------------------------------
 
 \section{Literatuurstudie}%
 \label{sec:literatuurstudie}
 
-Hier beschrijf je de \emph{state-of-the-art} rondom je gekozen onderzoeksdomein, d.w.z.\ een inleidende, doorlopende tekst over het onderzoeksdomein van je bachelorproef. Je steunt daarbij heel sterk op de professionele \emph{vakliteratuur}, en niet zozeer op populariserende teksten voor een breed publiek. Wat is de huidige stand van zaken in dit domein, en wat zijn nog eventuele open vragen (die misschien de aanleiding waren tot je onderzoeksvraag!)?
+Binnen de werled van softwareontwikkeling worden code reviews als essentieel gezien om een kwaliteitsvolle code te schrijven.
+Uit onderzoek van \textcite{McIntosh2015} komen we te weten dat er een sterke correlatie is tussen de grondigheid van code reviews en de uiteindelijke kwaliteit van de software.
+Teams die voor alle code reviews doen, hebben veel minder bugs in productie fase van een software waaraan ze aan het werken zijn.
+Toch benadrukken \textcite{Bacchelli2013} dat de verwachtingen in de praktijk niet altijd overeenkomen met de realiteit.
+Zij stellen vast dat de hoofddoel van code reviews wel het vinden van fouten is, maar eigenlijk is het vooral goed omdat verschillende developers zo kennis met elkaar kunnen delen.
+Bovendien ondervonden ze dat tijdsdruk een groot probleem is, dat vaak zorgt voor inconsistente reviews en lange wachttijden.
 
-Je mag de titel van deze sectie ook aanpassen (literatuurstudie, stand van zaken, enz.). Zijn er al gelijkaardige onderzoeken gevoerd? Wat concluderen ze? Wat is het verschil met jouw onderzoek?
+Om al deze menselijke inconsistenties en grote tijdsverlies te vermijden, focussen recentere onderzoeken zich heel vaak op automatisering.
+In een heel uitgebreide onderzoek naar de staat van moderne code reviews geven \textcite{Yang2024} aan dat moderne tools constant beter worden in het herkennen van complexe patronen,
+die vroeger nog een porbleem waren om te detecteren en altijd menselijke ingrip nodig hadden. Deze evolutie naar betere tools wordt verder onderbouwd door \textcite{Almeida2023},
+die met AI gebaseerde tools voor code reviews aantonen dat kwaliteit van de code verhoogd kan worden wanneer er gebruik gemaakt wordt van deze tools.
 
-Verwijs bij elke introductie van een term of bewering over het domein naar de vakliteratuur, bijvoorbeeld~\autocite{Hykes2013}! Denk zeker goed na welke werken je refereert en waarom.
-
-Draag zorg voor correcte literatuurverwijzingen! Een bronvermelding hoort thuis \emph{binnen} de zin waar je je op die bron baseert, dus niet er buiten! Maak meteen een verwijzing als je gebruik maakt van een bron. Doe dit dus \emph{niet} aan het einde van een lange paragraaf. Baseer nooit teveel aansluitende tekst op eenzelfde bron.
-
-Als je informatie over bronnen verzamelt in JabRef, zorg er dan voor dat alle nodige info aanwezig is om de bron terug te vinden (zoals uitvoerig besproken in de lessen Research Methods).
-
-% Voor literatuurverwijzingen zijn er twee belangrijke commando's:
-% \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
-%   geen onderdeel is van de zin.
-% \textcite{KEY} => Auteur (jaartal)  Gebruik dit als de auteursnaam wel een
-%   functie heeft in de zin (bv. ``Uit onderzoek door Doll & Hill (1954) bleek
-%   ...'')
-
-Je mag deze sectie nog verder onderverdelen in subsecties als dit de structuur van de tekst kan verduidelijken.
+Het klinkt allemaal veelbelovend, maar momenteel zijn geautomatiseerde tools voor code reviews nog niet volledig perfect.
+Uit recent onderzoek van \textcite{Cihan2024} blijkt dat developers nog vaak te maken krijgen met een hoog aantal \emph{false positives} (onterechte foutmeldingen) die de geautomatiseerde tools geven.
+Dit zorgt ervoor dat de developers veel errors moeten nakijken, waarvan de meeste onterecht zijn, wat vaak leidt tot verlies van focus en wordt niet genoeg aandacht besteed en zware fouten.
+Daarnaast merken \textcite{Yang2024} op dat het niet zo simpel is om deze tools te integreren in bestaande workflows en zeker niet wanneer de configuratie heel complex is.
 
 %---------- Methodologie ------------------------------------------------------
 \section{Methodologie}%
 \label{sec:methodologie}
 
-Hier beschrijf je hoe je van plan bent het onderzoek te voeren. Welke onderzoekstechniek ga je toepassen om elk van je onderzoeksvragen te beantwoorden? Gebruik je hiervoor literatuurstudie, interviews met belanghebbenden (bv.~voor requirements-analyse), experimenten, simulaties, vergelijkende studie, risico-analyse, PoC, \ldots?
+Dit onderzoek zal gebruik maken van een vergelijkende studie.
 
-Valt je onderwerp onder één van de typische soorten bachelorproeven die besproken zijn in de lessen Research Methods (bv.\ vergelijkende studie of risico-analyse)? Zorg er dan ook voor dat we duidelijk de verschillende stappen terug vinden die we verwachten in dit soort onderzoek!
+\subsection{Dataverzameling}
+Er zal een dataset worden samengesteld van pull requests (uit een open-source project of van bepaalde bedrijven).
 
-Vermijd onderzoekstechnieken die geen objectieve, meetbare resultaten kunnen opleveren. Enquêtes, bijvoorbeeld, zijn voor een bachelorproef informatica meestal \textbf{niet geschikt}. De antwoorden zijn eerder meningen dan feiten en in de praktijk blijkt het ook bijzonder moeilijk om voldoende respondenten te vinden. Studenten die een enquête willen voeren, hebben meestal ook geen goede definitie van de populatie, waardoor ook niet kan aangetoond worden dat eventuele resultaten representatief zijn.
+\subsection{Experiment}
+Het experiment zal bestaan uit twee fases:
+\begin{enumerate}
+    \item \textbf{Handmatig:} De code wordt handmatig gereviewd door developers. Hierbij worden gaan we aantal dingen meten: tijd gespendeerd, aantal gevonden fouten, type fouten.
+    \item \textbf{Automatisch:} Dezelfde code wordt geanalyseerd door geselecteerde tools (bijv. GitHub Copilot, CodeRabbit en SonarQube), ook hier meten we dezelfde gegevens.
+\end{enumerate}
 
-Uit dit onderdeel moet duidelijk naar voor komen dat je bachelorproef ook technisch voldoen\-de diepgang zal bevatten. Het zou niet kloppen als een bachelorproef informatica ook door bv.\ een student marketing zou kunnen uitgevoerd worden.
-
-Je beschrijft ook al welke tools (hardware, software, diensten, \ldots) je denkt hiervoor te gebruiken of te ontwikkelen.
-
-Probeer ook een tijdschatting te maken. Hoe lang zal je met elke fase van je onderzoek bezig zijn en wat zijn de concrete \emph{deliverables} in elke fase?
+\subsection{Analyse}
+De resultaten worden vergeleken op basis van kwantitatieve metrics:
+\begin{itemize}
+    \item \textbf{Efficiëntie:} Tijd (uitgedrukt in minuten) van pull request creatie tot merge.
+    \item \textbf{Accuratie:} Aantal terechte foutmeldingen (True Positives) vs. valse meldingen (False Positives).
+\end{itemize}
 
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwacht resultaat, conclusie}%
 \label{sec:verwachte_resultaten}
 
-Hier beschrijf je welke resultaten je verwacht. Als je metingen en simulaties uitvoert, kan je hier al mock-ups maken van de grafieken samen met de verwachte conclusies. Benoem zeker al je assen en de onderdelen van de grafiek die je gaat gebruiken. Dit zorgt ervoor dat je concreet weet welk soort data je moet verzamelen en hoe je die moet meten.
+De verwachting is dat geautomatiseerde tools veel sneller en beter zullen zijn in het detecteren van syntax-, stijl- en eenvoudige beveiligingsfouten,
+wat zal leiden tot een grote tijdsbesparing in de initiële fase van de review.
+Echter, er wordt verwacht dat voor complexe logische fouten menselijke input nogsteeds nodig zal zijn.
 
-Wat heeft de doelgroep van je onderzoek aan het resultaat? Op welke manier zorgt jouw bachelorproef voor een meerwaarde?
-
-Hier beschrijf je wat je verwacht uit je onderzoek, met de motivatie waarom. Het is \textbf{niet} erg indien uit je onderzoek andere resultaten en conclusies vloeien dan dat je hier beschrijft: het is dan juist interessant om te onderzoeken waarom jouw hypothesen niet overeenkomen met de resultaten.
-
+Het eindresultaat zal gevisualiseerd worden in een grafiek die de gemiddelde reviewtijd vergelijkt
+tussen het handmatige reviewen scenario en het megngeling van geautomatiseerde tools met menselijke input scenario.
